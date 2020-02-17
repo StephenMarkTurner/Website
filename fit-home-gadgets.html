@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+
+  <title>Home Gym</title>
+
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+</head>
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <span class="b">
+  </span>
+
+  <article class="main-style1">
+    <h2 class="main-heading-style1">Home Gym Ideas</h2>
+    <img class="image-style1" src="Images/home-gym-stuff.jpg" alt="Household items, less common items, for home gym"
+      title="Household items, less common items, for home gym">
+
+    <ul>
+      <li class="">
+        I use typical items like dumbbells, ankle weights, weight vest, chinup bar, pushup handles,
+        mat.
+      </li>
+      <li class="mt2">
+        I use less common items like a <dfn>'DARD'</dfn> for the shins, one sided dumbbells for wrist movements, an old school
+        neck harness.
+      </li>
+
+      <li class="mt2">
+        Chairs are very useful, they hold weights, can be used for dips, support the back during one arm exercises.
+        Gloves and even those soft
+        spongy sanding blocks from the hardware store can pad hands and feet during dips and wrist and shin exercises
+        for
+        example.
+      </li>
+      <li class="mt2">
+        A flight of stairs provides a nice cardio workout, (especially with some of the workout done wearing a weight
+        vest). I start up two timers on the computer, one with the total time and one with a split time, to help me pace
+        myself.
+      </li>
+      <li class="mt2">
+        A piece of wood across 2 hex dumbbells provides a platform for calf raises. I use planks of wood, possibly
+        stacked 2 or 3 high, as a stop to limit the lower range of motion for some exercises like deadlifts and dumbbell
+        squats.
+      </li>
+      <li class="mt2">
+        I fashioned an inexpensive clock for timing sets and rest intervals. It only has a second hand, and has seconds
+        for digits on the face.
+
+        <a class="link-style2" href="workout-timer2.html">
+          Another option is the computer based workout timer that I wrote.
+        </a>
+
+      </li>
+    </ul>
+
+  </article>
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements("main-style1", mainStyle1);
+      addStylesToElements("main-heading-style1", mainHeadingStyle1);
+      addStylesToElements('image-style1', imageStyle1);
+      addStylesToElements('link-style2', linkStyle2);
+      createHeaderNav('header-nav-container');
+    }
+  </script>
+</body>
+
+</html>

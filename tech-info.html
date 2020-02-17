@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>About This Site</title>
+
+  <!-- My stuff. -->
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+  <style>
+    /* Debug, make sure it is last */
+    /* * { outline: 1px solid greenyellow; } */
+  </style>
+
+</head>
+
+
+<body class="color1-bg1" onload="myPageLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+    <h2 class="main-heading-style1">About This Website</h2>
+    <p class="">
+      I wanted to upgrade my skills in web
+      technologies, so I relearned the basics about web design. In the process, I learned about more modern
+      considerations such as responsive design and accessibility. I also learned about problems such as complexity
+      (especially in CSS) and modern approaches to controlling this such as Web Components.
+    </p>
+    <p class="">
+      I wrote the HTML, ECMAScript (JavaScript), and some CSS.
+      The fancy particle simulation is done by a program called 'particles.js'.
+
+      I used a CSS library called Tachyons. It is a collection of small single purpose CSS classes, which allows more
+      direct styling without relying on highly specified CSS selectors.
+    </p>
+    <p>
+      This type of CSS styling, while avoiding CSS complexity horrors, can also get tedious and repetitious. I developed
+      a hybrid style, using a pseudo CSS class and an associated string containing the Tachyons classnames which are
+      then applied to elements via script.
+    </p>
+    <p>
+      The colour scheme is based on the black and gold of the City of Waterloo.
+    </p>
+  </article>
+
+  <script>
+    function myPageLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      createHeaderNav('header-nav-container');
+    }
+  </script>
+
+</body>
+
+</html>

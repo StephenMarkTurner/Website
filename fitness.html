@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Fitness Info</title>
+
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+
+</head>
+
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+
+    <h2 class="main-heading-style1">Fitness, Nutrition and Health</h2>
+    <img class="image-style1" src="Images/medals.jpg" alt="Ribbons and medals from charity events"
+      title="Ribbons and medals from charity events">
+
+    <a class="link-style2" href="fit-food-health-overview.html">
+      My attempt at a broad outline (changes quite often &#128578;).
+    </a>
+    <a class="link-style2" href="workout-timer2.html">
+      My workout 'multi' timer. Not quite finished, try it!
+    </a>
+    <a class="link-style2" href="easy-warmup.html">
+      Pre workout progressive warm up.
+    </a>
+    <a class="link-style2" href="strength-outline.html">
+      Strength training outline.
+    </a>
+    <a class="link-style2" href="cardio-outline.html">
+      Cardio training outline.
+    </a>
+    <a class="link-style2" href="food-outline.html">
+      Nutrition outline.
+    </a>
+    <a class="link-style2" href="cardio-calc.html">
+      Cardio zone calculator.
+    </a>
+    <a class="link-style2" href="fit-home-gadgets.html">
+      Some home gym ideas.
+    </a>
+    <a class="link-style2 mt4" href="golden-ratio.html">
+      My lightweight post about the Golden ratio.
+    </a>
+    <a class="link-style2" href="goji-lesson.html">
+      A lesson in Cause and Effect. Tracking down the food that did not agree with me.
+    </a>
+
+
+  </article>
+
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      addStylesToElements('link-style2', linkStyle2);
+      addStylesToElements('image-style1', imageStyle1);
+      createHeaderNav('header-nav-container');
+    }
+  </script>
+
+</body>
+
+</html>

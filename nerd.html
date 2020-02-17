@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Math, Science, Computer</title>
+
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+  <script src="particles.min.js"></script>
+
+  <style>
+    .particles-background {
+      background-color: rgb(25%, 25%, 25%);
+    }
+
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+</head>
+
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+    <h2 class="main-heading-style1">Math, Science, Computer</h2>
+
+
+    <div id="particles-js" class="particles-background w5  color2-border ba br2">
+    </div>
+    <a class="link-style2" href="particles.html">
+      'Particles.js' larger display.
+    </a>
+
+    <img class="imageStyle1 w5 mt4" src="Images/joke-blackboard.jpg" ;
+      alt="Joke blackboard. Easy math (integral of cosine from 0 to 90 degrees). Einstein joke (equation using 'a' and then 'b' instead of 'c')"
+      title="Joke blackboard. Easy math (integral of cosine from 0 to 90 degrees). Einstein joke (equation using 'a' and then 'b' instead of 'c')">
+
+
+    <a class="link-style2 mt4" href="golden-ratio.html">
+      My lightweight post about the Golden ratio.
+    </a>
+    <a class="link-style2 mt4" href="tech-info.html">
+      About this website.
+    </a>
+
+    <h3 class="main-heading-style1">Computer Links</h3>
+    <a class="link-style2" href="https://www.w3schools.com">
+      W3schools is a good starting point for learning about web dev.
+    </a>
+    <a class="link-style2" href="https://developer.mozilla.org/en-US/">
+      Mozilla is the next stage for learning about web dev.
+    </a>
+    <a class="link-style2" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">
+      An excellent reference for CSS flexbox.
+    </a>
+    <a class="link-style2" href="https://css-tricks.com/snippets/css/complete-guide-grid/">
+      An excellent reference for CSS grid.
+    </a>
+    <a class="link-style2" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">
+      Mozilla tutorial for web components.
+    </a>
+    <a class="link-style2" href="https://tachyons.io">
+      Tachyons 'atomic' CSS library. This CSS style is not everybody's cup of tea.
+    </a>
+    <a class="link-style2" href="https://www.anaconda.com/distribution/">
+      The Anaconda distribution of science oriented Python with numpy and matplotlib.
+    </a>
+    <h3 class="main-heading-style1">Math Links</h3>
+    <a class="link-style2" href="https://www.youtube.com/user/professorleonard57">
+      Great intermediate to advanced mathematics YT lectures from Professor Leonard.
+    </a>
+    <a class="link-style2" href="https://www.youtube.com/user/blackpenredpen">
+      Blackpenredpen. Intermediate, mostly integrations and sums of series.
+    </a>
+    <a class="link-style2" href="https://www.youtube.com/user/MindYourDecisions">
+      A wide range of math and logic puzzles.
+    </a>
+
+  </article>
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      addStylesToElements('link-style2', linkStyle2);
+      createHeaderNav('header-nav-container');
+      addStylesToElements('image-style1', imageStyle1);
+
+      particlesJS.load('particles-js', 'particles.json');
+    }
+  </script>
+
+</body>
+
+</html>

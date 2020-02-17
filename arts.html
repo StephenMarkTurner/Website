@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Arts</title>
+
+  <!-- My stuff. -->
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+</head>
+
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+    <h2 class="main-heading-style1">Art and Colour Theory</h2>
+
+    <img src="Images/paints.jpg" alt="Artist's paints arranged by hue in a Munsell colour wheel"
+      title="Artist's paints arranged by hue in a Munsell colour wheel" class="image-style1">
+    <img class="image-style1" src="Images/my-painting2.jpg" alt="My painting, done on Christmas Eve 2019"
+      title="My painting, done on Christmas Eve 2019">
+    <img class="image-style1" src="Images/my-painting.jpg" alt="My painting, done in Summer 2019"
+      title="My painting, done in Summer 2019">
+      <img class="image-style1" src="Images/my-painting3.jpg" alt="My painting, done in August 2019"
+      title="My painting, done in August 2019">
+
+
+    <div class="">
+      <a class="link-style2" href="munsell.html">
+        My Munsell colour viewer.
+      </a>
+      <a class="link-style2" href="mijello-fusion-24.html">
+        My main watercolour palette setup.
+      </a>
+      <a class="link-style2 mt4" href="golden-ratio.html">
+        My lightweight post about the Golden ratio.
+      </a>
+      
+      <img class="image-style1" src="Images/my-painting4.jpg" 
+      alt="My painting, done in June 2019"
+      title="My painting, done in June 2019">
+
+      <a class="link-style2"
+        href="https://www.google.ca/search?q=stephen+quiller&client=opera&hs=dkZ&source=lnms&tbm=isch&sa=X&ved=2ahUKEwixzvv67MzmAhXBqlkKHYSTCBwQ_AUoAXoECBEQAw&biw=1536&bih=794">
+        Stephen Quiller online images.
+      </a>
+
+      <a class="link-style2"
+        href="https://www.google.ca/search?hs=y9E&q=jasmine+huang+chien+chung+wei&tbm=isch&source=univ&client=opera&sa=X&ved=2ahUKEwjP8p6E7szmAhXJUt8KHWbuB7QQsAR6BAgHEAE&biw=1536&bih=794&dpr=1.25">
+        Jasmine Huang and Chien Chun Wei online images.
+      </a>
+      <a class="link-style2" href="https://www.handprint.com">
+        Handprint. A lot of general info, much of it geared toward watercolour.
+      </a>
+      <a class="link-style2" href="http://www.huevaluechroma.com">
+        HueValueChroma. Colour theory and practice.
+      </a>
+      <a class="link-style2" href="  http://pteromys.melonisland.net/munsell/">
+        A great Munsell viewer.
+      </a>
+      <a class="link-style2" href="https://www.colormunki.com/game/huetest_kiosk">
+        Farnsworth 100 colour test.
+      </a>
+    </div>
+  </article>
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      addStylesToElements('link-style2', linkStyle2);
+      addStylesToElements('image-style1', imageStyle1);
+      createHeaderNav('header-nav-container');
+    }
+  </script>
+
+
+</body>
+
+</html>

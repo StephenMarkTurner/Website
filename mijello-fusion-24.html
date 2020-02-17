@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main Watercolour Palette</title>
+
+    <link rel="stylesheet" href="tachyons.min.css">
+    <link rel="stylesheet" href="shared.css">
+    <script src="shared.js"></script>
+
+    <style>
+        .row {
+            display: flex;
+            flex: 0 1 33%;
+        }
+
+        .rowitem {
+            display: inline-block;
+            border-radius: 0.25rem;
+            margin-left: 0.25rem;
+            padding: 0.25rem;
+            margin-top: 1rem;
+            width: 15rem;
+        }
+
+        .rowitem-palette {
+            display: inline-block;
+            border: none;
+        }
+
+        .rowitem-y {
+            background-color: hsl(55, 50%, 75%);
+        }
+
+        .rowitem-g {
+            background-color: hsl(120, 40%, 75%);
+        }
+
+        .rowitem-b {
+            background-color: hsl(210, 50%, 75%);
+        }
+
+        .rowitem-o {
+            background-color: hsl(40, 75%, 75%);
+        }
+
+        .rowitem-r {
+            background-color: hsl(0, 60%, 75%);
+        }
+
+        .rowitem-v {
+            background-color: hsl(250, 30%, 75%);
+        }
+    </style>
+
+    <style>
+        /* Debug, make sure it is last */
+        /* {outline: 1px solid greenyellow; } */
+    </style>
+
+</head>
+
+<body class="color1-bg1" onload="onLoad()">
+
+    <div class="header-nav-container"></div>
+
+    <section class="main-style1">
+        <h2 class="main-heading-style1">
+            Main Watercolour Palette.
+        </h2>
+
+        <details>
+            <summary>
+                Palette Information
+            </summary>
+            <p>
+                This is a 'Mijello Fusion 24' palette. There are 32 paints in 24 wells, so some paints are doubled up. I
+                have a separate palette for Gouache, Cobalt pigments and Black pigments (except for Perylene).
+            </p>
+            <ul class="list pl0">
+                <li class="ml0">W&N is Winsor & Newton</li>
+                <li>DaV is DaVinci</li>
+                <li>MGra is M Graham</li>
+                <li>DS is Daniel Smith</li>
+                <li>DR is Daler Rowney</li>
+                <li>and QOR is QOR by Golden</li>
+            </ul>
+        </details>
+        <img src="Images/mijello-fusion-24.jpg" alt="Mijello Fusion 24 atercolour alette with paints"
+            title="Mijello Fusion 24 atercolour alette with paints" class="image-style1 mt2">
+    </section>
+
+    <div class="dark-gray bg-moon-gray system-sans-serif fw1 f6 f5-m f4-l mw7 mt2 mt3-l pa2 pa3-l center wwbw br3">
+
+        <div class="row">
+            <div class="rowitem rowitem-g">W&N Sap Green (pg36 py110)<br>DaV Chrome Oxide Green (pg17)</div>
+            <div class="rowitem rowitem-g ">DaV Perylene Green(Pbk 31)</div>
+            <div class="rowitem rowitem-v ">DaV Ultra Violet (pv15)<br>MGra Mineral Violet (pv16, pv15)</div>
+        </div>
+
+        <div class="row">
+            <div class="rowitem rowitem-g">DaV Viridian Green (pg18)</div>
+            <div class="rowitem rowitem-b ">DaV Indanthrene Blue (pb60)<br>DaV Thalo Turquoise (pb16)</div>
+            <div class="rowitem rowitem-v ">DS Amethyst</div>
+        </div>
+
+        <div class="row">
+            <div class="rowitem rowitem-g">DaV Thalo Green YS (pg36)</div>
+            <div class="rowitem rowitem-g">QOR Thalo Green BS (pg7)</div>
+            <div class="rowitem rowitem-b">MGra Thalo Blue GS (pb15:3)</div>
+        </div>
+
+        <div class="row">
+            <div class="rowitem rowitem-palette">(mixing area)</div>
+            <div class="rowitem rowitem-palette"></div>
+            <div class="rowitem rowitem-b">WN Ultra Blue (pb29)</div>
+        </div>
+        <div class="row">
+            <div class="rowitem rowitem-palette"></div>
+            <div class="rowitem rowitem-palette"></div>
+            <div class="rowitem rowitem-v">MGra Dioxazine Purple (pv23)</div>
+        </div>
+        <div class="row">
+            <div class="rowitem rowitem-palette"></div>
+            <div class="rowitem rowitem-palette"></div>
+            <div class="rowitem rowitem-v">DS Quin Purple (pv55)</div>
+        </div>
+        <div class="row">
+            <div class="rowitem rowitem-palette"></div>
+            <div class="rowitem rowitem-palette"></div>
+            <div class="rowitem rowitem-r">QOR Quin Magenta (pr122)</div>
+        </div>
+        <div class="row">
+            <div class="rowitem rowitem-palette"></div>
+            <div class="rowitem rowitem-palette"></div>
+            <div class="rowitem rowitem-r">MGra Quin Rose (pv19)</div>
+        </div>
+        <div class="row">
+            <div class="rowitem rowitem-palette"></div>
+            <div class="rowitem rowitem-palette"></div>
+            <div class="rowitem rowitem-r ">QOR Pyrrole Red (pr254)</div>
+        </div>
+
+        <div class="row">
+            <div class="rowitem rowitem-y">QOR Benzi Yellow (pr154)</div>
+            <div class="rowitem rowitem-y ">MGra Indian Yellow (py110)</div>
+            <div class="rowitem rowitem-o ">MGra Azo Orange (po62)</div>
+        </div>
+
+        <div class="row">
+            <div class="rowitem rowitem-y">QOR Green Gold (py129)<br>QOR Azo Y (py150)</div>
+            <div class="rowitem rowitem-y ">MGra Yellow Ochre (py43)<br> MGra Raw Umber (pbr7)</div>
+            <div class="rowitem rowitem-o ">QOR T Pyrrole Orange (po71)</div>
+        </div>
+
+        <div class="row">
+            <div class="rowitem rowitem-o">MGra Burnt Umber (pbr7)<br>MGra Terra Rosa (pr101)</div>
+            <div class="rowitem rowitem-r ">MGra Quin Red (pr209)<br>DR Perm Magenta (pv19)</div>
+            <div class="rowitem rowitem-o ">MGra Quin Rust (po48)<br>WN Burnt Sienna (pr101)</div>
+        </div>
+    </div>
+
+    <script>
+        function onLoad() {
+            addStylesToElements('main-style1', mainStyle1);
+            addStylesToElements('main-heading-style1', mainHeadingStyle1);
+            addStylesToElements('image-style1', imageStyle1);
+            createHeaderNav('header-nav-container');
+        }
+    </script>
+
+
+
+</body>
+
+</html>

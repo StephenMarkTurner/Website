@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Timers</title>
+
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+  <script src="workout-timer2.js"></script>
+
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+</head>
+
+<body class="color1-bg1" onload="onLoad()">
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+    <!--
+    <p id="out-para">debug information</p>
+    <p id="out-para2">debug information</p>
+    -->
+
+    <h2 class="main-heading-style1">Multi Timer</h2>
+
+    <details>
+      <summary>
+        Timer Information
+      </summary>
+
+      <div">
+        <p>
+          There is an optional delay, to give you time to get ready if needed.
+        </p>
+        <p>
+          There is one main timer (or it can run without stopping).
+        </p>
+        <p>
+          You can add one or more 'split' timers (single or repeating). For example, I like to hear a beep every 5
+          minutes
+          or so when doing Cardio.
+        </p>
+        <p>
+          You can add one or more 'double' timers, which allow you to set 2 different intervals which alternate. For
+          example, I like a 40 second on / 20 second rest timing for Plank exercises.
+        </p>
+      </div">
+    </details>
+
+    <!-- Not an actual form. -->
+    <div class="mt3 pa2">
+      <div>
+        <div class="ba br2 pa1">
+          <label>Delay (Sec)
+            <input type="number" id="f-delay" name="" class="w3 br2 bw0 ma1 tr" min="0" max="99" step="1" value="5" />
+          </label>
+          <label class="ml2">Beep After Delay
+            <input type="checkbox" id="f-t1-beep-after-delay" name="" />
+          </label>
+        </div>
+        <div class="ba br2 pa1 mt2">
+          <label>Main Timer <br>Min
+            <input type="number" id="f-t1-timemin" name="" class="
+             br2 bw0 ma1 tr" min="0" max="999" step="1"
+              value="1" />
+          </label>
+          <label class="ml2">Sec
+            <input type="number" id="f-t1-timesec" name="" class="w3 br2 bw0 ma1 tr" min="0" max="59" step="1"
+              value="0" />
+          </label>
+          <br>
+          <label class="">Don't Stop
+            <input type="checkbox" id="f-t1-run-forever" name="" />
+          </label>
+          <label class="ml2">Count Up
+            <input type="checkbox" id="f-t1-count-up" name="" />
+          </label>
+        </div>
+      </div>
+
+      <div id="additional-timers">
+
+      </div>
+
+      <div class="ba br2 pa1 mt2">
+        <button type="button" id="f-b-startpause" class="mt2 button-style2" onclick="onClickStartPause()">
+          Start / Pause
+        </button>
+        <button type="button" id="f-b-reset" class="button-style2" onclick="onClickReset()">
+          Reset
+        </button>
+        <button type="button" id="f-b-addtimer" class="button-style2" onclick="onClickAddTimer()">
+          Add Split Timer
+        </button>
+        <button type="button" id="f-b-adddoubletimer" class="button-style2" onclick="onClickAddDoubleTimer()">
+          Add Double Timer
+        </button>
+      </div>
+    </div>
+  </article>
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements("main-style1", mainStyle1);
+      addStylesToElements("main-heading-style1", mainHeadingStyle1);
+      addStylesToElements("button-style2", buttonStyle2);
+      addStylesToElements("link-style2", linkStyle2);
+      createHeaderNav("header-nav-container");
+
+      initTimerFunction();
+    }
+  </script>
+</body>
+
+</html>

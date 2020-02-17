@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Food Outline</title>
+
+  <!-- My stuff. -->
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+</head>
+
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+    <h2 class="main-heading-style1">Nutrition Outline</h2>
+    <img class="image-style1" src="Images/fruits2.jpg" alt="An assortment of fresh and frozen fruits"
+      title="An assortment of fresh and frozen fruits">
+
+    <ul>
+
+      <li class="">
+        If you need to make some changes, <span class="b i"> don't overthink it, just begin.</span>
+        Don't let perfection get in the way of
+        progress.
+        Think long term, with a sensible and sustainable diet plan.
+      </li>
+
+      <li class="mt2">
+        <a class="link-style2" href="https://food-guide.canada.ca/en/"> The Canada Food Guide
+          is a good source of basic information.
+        </a>
+      </li>
+
+      <li class="mt2">
+        Calorie density (calories per weight of food) is a useful way to categorize foods. Leafy greens would be on one
+        end of this scale, oils would
+        be on the other. Calorie intake can be adjusted by choosing more food from one part of the scale versus another.
+      </li>
+
+      <li class="mt2">
+        Nutrient density (nutrients per calorie) is another way to categorize foods, beyond just calories. Typically,
+        whole foods will beat processed foods (whole grains over refined grains, pumpkin seeds over pumpkin seed oil and
+        so on).
+      </li>
+
+      <li class="mt2">
+        Don't fear carbohydrates from whole food sources. Choose oats and millet, potatoes and
+        sweet potatoes and carrots, lentils and
+        chick peas, berries and bananas and so on. Choose these over foods like boxed cereals, most breads, and
+        definitely soft drinks.
+      </li>
+    </ul>
+  </article>
+
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      addStylesToElements('link-style2', linkStyle2);
+      addStylesToElements('image-style1', imageStyle1);
+      createHeaderNav('header-nav-container');
+    }
+  </script>
+
+</body>
+
+</html>

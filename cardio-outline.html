@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cardio Outline</title>
+
+  <!-- My stuff. -->
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+</head>
+
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+    <h2 class="main-heading-style1">Cardio Training Outline</h2>
+
+    <ul>
+      <li class="">Perceived exertion scales are better than maximum heart rate formulas when beginning a program. The 'talk test' is still a great simple method. Formulas are averages and may not apply closely to you.
+        For instance, I often exceed my typical predicted maximum by 10-12 beats per minute, sometimes a bit more. <span class="b i">However, you may have a lower than predicted maximum heart rate. An exercise could be too demanding for you, by over 10 beats per minute.</span>
+      </li>
+      <li class="mt2">
+        I don't really think of cardio or any other activity as a way specifically to burn calories. I think that
+        typical variations (LSD, HIIT, Fartlek, Tempo, Threshold, Tabata and so on) should be selected only  for the particular training or recovery benefits. Basically, I try to think of choosing the right amount of food to support whatever activities and exercises are done, rather than adding activity to balance calorie excess. Of course, it is hard to be exact. &#128578
+      </li>
+      <li class="mt2">
+        Both too much and too little are not healthy, for the heart as well as the knees. 'Sensible and sustainable' definitely applies to cardio training!
+      </li>
+      <li class="mt2">
+        For base building exercises, I favour
+        long walks and long bicycle rides. I also do some moderate fitness kickboxing.
+      </li>
+      <li class="mt2">
+        For more intense cardio, I like 'hills' while bicycling or running very slowly. I especially like the stairs at home (for the consistency).
+      </li>
+      <li class="mt2">
+        Stair workouts tend to range from 20 to 30 minutes, with as much
+        as half done while wearing a 10kg (22 pound) weight vest. This is
+        where I tend to get my highest heart rates.
+      </li>
+    </ul>
+  </article>
+
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      createHeaderNav('header-nav-container');
+    }
+  </script>
+
+</body>
+
+</html>

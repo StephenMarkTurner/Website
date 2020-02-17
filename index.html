@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+  <title>Steve's Page</title>
+  <style>
+    /* Debug, make sure it is last */
+    /* {outline: 1px solid greenyellow; } */
+  </style>
+</head>
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <section class="main-style1">
+    <h2 class="main-heading-style1">
+      Hi. I'm Steve, and this is my website.
+    </h2>
+
+    <button type="button" onclick="toggleColorTheme()" id="toggle-theme" class="button-style2 mb4">Toggle Colour
+      Theme</button>
+
+    <div class="photo-container"></div>
+
+    <p>
+      For better or for worse, it's mine. The html, the css, the javascript, the posts, the photographs.
+      Since I use it to practice web development and programming, usually some of it will be under construction. &#128578;
+    </p>
+
+    <p>
+      There are no ads, popups, notifications, location requests, cookies, surveys, or other annoyances.
+      As such, it may look a bit sparse.
+    </p>
+    <p>
+      It is a mix of my own mildly interesting content, plus links to sites that I like.
+      Some of it may be of interest to yourself.
+    </p>
+
+    <p>My apologies, but this site does not appear to work as well as I would like with the Edge browser. Hopefully I
+      will figure that out soon.
+    </p>
+
+    <div class="">
+      <!--
+      <a class="link-style2" href="test.html">
+        TEST!
+      </a>
+    -->
+      <a class="link-style2" href="res.html">
+        About me.
+      </a>
+      <a class="link-style2" href="tech-info.html">
+        About this website.
+      </a>
+      <a class="link-style2" href="particles.html">
+        'Particles.js' Relaxing graphic display.
+      </a>
+
+    </div>
+  </section>
+
+  <script>
+    function onLoad() {
+      initColorTheme();
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      addStylesToElements('link-style2', linkStyle2);
+      addStylesToElements('button-style2', buttonStyle2);
+      createMyProfilePhoto('photo-container');
+      createHeaderNav('header-nav-container');
+    }
+
+    function getColorTheme() {
+      const t = sessionStorage.getItem('color-theme');
+      return t;
+    }
+
+    function initColorTheme() {
+      const currentTheme = getColorTheme();
+      if (currentTheme == null) {
+        //console.log('init local session storage');
+        sessionStorage.setItem('color-theme', 'dark');
+      } else {
+        //console.log('found local session storage');
+      }
+    }
+
+    // If user hits button to toggle the scheme.
+    function toggleColorTheme() {
+      const currentTheme = getColorTheme();
+      const newTheme = currentTheme == 'light' ? 'dark' : 'light';
+      sessionStorage.setItem('color-theme', newTheme);
+      setColorTheme();
+    }
+  </script>
+
+</body>
+
+</html>

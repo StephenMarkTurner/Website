@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <title>Warmup</title>
+
+  <script src="shared.js"></script>
+
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+
+</head>
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+
+    <h2 class="main-heading-style1">Basic Warmup</h2>
+
+    <p>
+      Elements distilled over the years from various types of gentle exercise.
+    </p>
+
+    <details class="ml2">
+    <summary>Lower Body</summary>      
+    <ul>
+      <li>Ankle Circle</li>
+      <li>Hip Flex, Extend</li>
+      <li>Hip ABduct, Adduct</li>
+      <li>Hip Rotate (Open)</li>
+      <li>1/2 Squat</li>
+      <li>Kick, Butt Kick</li>
+      <li>Straight Leg Raise, Mule Kick</li>
+      <li>Side Kick, Adduct</li>
+      <li>Hip Rotate (Closed)</li>
+      <li>Lateral 3/4 Squat</li>
+      <li>Calf Raise, Shin Raise</li>
+      <li>Gentle Knee Circles</li>
+    </ul>
+  </details>
+
+  <details class="ml2 mt2">
+      <summary>Upper Body</summary>      
+    <ul>
+      <li>Shrug, Rear Shrug</li>
+      <li>Shoulder Raise Out, Front, Back</li>
+      <li>Reach Overhead</li>
+      <li>Curl (Wrist Rotation)</li>
+      <li>Wrist Pronate, Supinate</li>
+      <li>Wrist Flex, Extend, Ulnar, Radial</li>
+      <li>Hands, Fingers</li>
+      <li>Shoulder Rotators Up, Down, Out</li>
+      <li>Neck Rotate, Lateral, Flex, Extend</li>
+      <li>Progressive Arm Rotation</li>
+    </ul>
+  </details>
+
+<details class="ml2 mt2">
+    <summary>Core</summary>
+    <p class="mv2">Easy does it with back exercises!</p>
+    <ul class="mt2">
+      <li>Hip Circle</li>
+      <li>Back Lateral Flex</li>
+      <li>Deadlift</li>
+      <li>Spine Rotation Upper, lower</li>
+      <li>45 Degree Cat, Camel</li>
+      <li>Cat, Camel</li>
+      <li>Floppy Pushup, Child Pose</li>
+    </ul>
+  </details>
+
+  <details class="ml2 mt2">
+      <summary>Optional Harder Warm Up</summary>      
+    <ul>
+      <li>DB Shoulder Shrug</li>
+      <li>DB Bent Low Row</li>
+      <li>1/2 Squat</li>
+      <li>Mil Press</li>
+      <li>Pushup</li>
+      <li>Lunge</li>
+      <li>Plank, Side Plank</li>
+      <li>Stretch Squat (no load)</li>
+    </ul>
+  </details>
+
+  </article>
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      addStylesToElements('button-style1', buttonStyle1);
+      createHeaderNav('header-nav-container');
+
+    }
+  </script>
+</body>
+
+</html>

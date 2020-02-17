@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Particles</title>
+
+  <!-- My stuff. -->
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+  <script src="particles.min.js"></script>
+
+  <style>
+    .particles-background {
+      background-color: rgb(25%, 25%, 25%);
+    }
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+</head>
+
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+    <h3 class="main-heading-style1">Particles.JS</h3>
+    <p>Click to add more particles. (one day, a more complete control panel)</p>
+    <div id="particles-js" class="particles-background vh-75 br2">
+    </div>
+  </article>
+      
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      addStylesToElements('link-style2', linkStyle2);
+      createHeaderNav('header-nav-container');
+
+      // Instead of image??
+      particlesJS.load('particles-js', 'particles.json');
+    }
+  </script>
+
+</body>
+
+</html>

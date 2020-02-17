@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+  <title>About Me</title>
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+</head>
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <section class="main-style1">
+    <h2 class="main-heading-style1">My background, very very briefly</h2>
+    <div class="photo-container"></div>
+
+    <p class="">
+      I was born in 1956 in the UK, although I have lived most of my life in Southern Ontario, mostly in the Waterloo
+      Region.
+    </p>
+    <p class="">
+      Athletically, I played both informal and organized sports. I represented the City of Waterloo in baseball (although
+      to be honest I was mostly a benchwarmer). I represented my schools in track, wrestling, and soccer. 
+      More informally, I played a lot of table tennis and badminton.
+      I played a variety of community team sports (hockey, and even
+      a little bit of football in addition to baseball).
+    </p>
+    <p class="">
+      Academically, I received an Electrical Engineering degree from the University of Waterloo in 1984. I then worked as a computer
+      programmer for many years, working both for famous companies identified by three letter acronyms, and for very small companies.
+    </p>
+    <p class="">
+      My exercise focus is now primarily health based, although I still enjoy more demanding challenges on occasion. I love to walk, bicycle, lift weights,
+      do light yoga and fitness kickboxing.
+      I did one walk of well over 20 miles in 2018 in extreme heat, and I am planning to do a full walking marathon in 2020.
+    </p>
+    <p>
+      Other avocations include painting and guitar.
+    </p>
+  </section>
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      createHeaderNav('header-nav-container');
+      createMyProfilePhoto('photo-container');
+    }
+  </script>
+  
+</body>
+
+</html>

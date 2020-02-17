@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Golden Ratio</title>
+
+    <link rel="stylesheet" href="tachyons.min.css">
+    <link rel="stylesheet" href="shared.css">
+    <script src="shared.js"></script>
+
+    <style>
+        #svg-rect {
+            width: 16.18rem;
+            height: 10rem;
+            fill: var(--color1-bg4);
+        }
+    </style>
+
+    <style>
+        /* Debug, make sure it is last */
+        /* {outline: 1px solid greenyellow; } */
+    </style>
+
+</head>
+
+<body class="color1-bg1" onload="onLoad()">
+
+    <div class="header-nav-container"></div>
+
+    <section class="main-style1">
+        <h2 class="main-heading-style1">
+            The Golden Ratio<br>
+            An intersection Of Mathematics, Art, And Yes, Fitness
+        </h2>
+
+        <p class="mt4">
+            The Golden ratio, often called 'Phi' and written as
+            <var>&phi;</var>, is equal to<br>
+            <var>(1 + &radic;5) / 2</var>
+            or about 1.618.
+        </p>
+        <h3 class="main-heading-style1 mt4">
+            The Math
+        </h3>
+        <p>
+            If the ratio of two numbers is <var>&phi;</var>, then so is the sum of the numbers divided by the larger
+            number. That is if<br>
+            <var>a / b = &phi;</var>, then
+            <var>(a + b) / a = &phi;</var>
+
+            <br><var>(&phi; + 1) / &phi; = &phi;</var><br>
+            Numerically,<br>
+            <var>(1.618 + 1) / 1.618 = 1.618</var>
+        </p>
+
+        <p>
+            The reciprocal of <var>&phi;</var> is equal to <var>&phi; - 1</var>. That is<br>
+            <var>
+                1 / &phi; = &phi; - 1, or<br>
+                1 / &phi; + 1 = &phi;
+            </var><br>
+            Numerically,<br>
+            <var>1 / 1.618 = 0.618</var>
+        </p>
+        <p>
+            These equations are equivalent to the quadratic equation <var>x<sup>2</sup> - x = 1</var>.<br>
+            The solutions to the equation are<br><var>(1 + &radic;5) / 2</var> and <var>(1 - &radic;5) / 2</var> or<br>
+            <var>&phi;</var> and <var> 1 - &phi; = -1 / &phi;</var><br>
+            Numerically,<br>
+            <var>1.618<sup>2</sup> - 1.618 = 1</var><br>
+            <var>(-0.618)<sup>2</sup> - (-0.618) = 1</var>
+        </p>
+        <p>
+            Here is a way to create one geometrically. The 1/2 diagonal is equal to <br><var>&radic;5 / 2</var> times
+            the side of the square.
+            Adding this to 1/2 of the side of the square gives us a perfect Golden rectangle.
+        </p>
+        <img class="w5 w6-l br2 mb2" src="Images/golden-ratio.jpg" alt="Geometric construction of Golden ratio"
+            title="Geometric construction of Golden ratio">
+
+        <p>
+            Some numeric sequences such as the well known <dfn>Fibonacci Sequence</dfn>
+            are created by adding new terms that are the sum of the previous two terms.
+            Theses types of sequences have terms whose ratio converges to
+            <var>&phi;</var>. For example, 1, 1, 2, 3, 5, 8, 13..., the ratio of the last terms shown is (13 / 8) =
+            1.625.
+        </p>
+
+
+        <h3 class="main-heading-style1 mt4">
+            Artistic Connection
+        </h3>
+        <p>
+            The dimensions of a painting can be in a Golden ratio. This is subjective of course, but this is often
+            considered to be a particularly aesthetically pleasing form. The placement of 'focal points' ie areas of
+            most interest within the painting often follows the ratio.
+        </p>
+
+
+        <h3 class="main-heading-style1 mt4">
+            A Tenuous Fitness Connection
+        </h3>
+        <p>
+            I am trying these sequences as templates for rep patterns. The decreasing rep goals suggest a reduced rest
+            interval in between sets. For example, I like (10, 6, 4) and (13, 8, 5) as a 3 set
+            rep range for a dumbbell squat using a 60 to 90 second interval.
+        </p>
+        <p>
+            Useful 3 set patterns based on this concept might be a range such as (5, 3, 2), (6, 4, 2), (8, 5, 3), (10,
+            6, 4), (13, 8,
+            5), (16, 10, 6), (21, 13, 8), (26, 16, 10), (34, 21, 13).
+        </p>
+        <p>
+            Some exercises seem to work better than others, if it doesn't feel right, use a more conventional rep range.
+        </p>
+        <p>
+            <span class="b i">Don't overthink this, it is not based on any data that I know of. It just has a nice
+                subjective feel to it.</span>
+        </p>
+
+    </section>
+
+    <script>
+        function onLoad() {
+            setColorTheme();
+            addStylesToElements('main-style1', mainStyle1);
+            addStylesToElements('main-heading-style1', mainHeadingStyle1);
+            addStylesToElements('link-style2', linkStyle2);
+            addStylesToElements('image-style1', imageStyle1);
+            addStylesToElements('button-style2', buttonStyle2);
+            createMyProfilePhoto('photo-container');
+            createHeaderNav('header-nav-container');
+        }
+    </script>
+
+</body>
+
+</html>

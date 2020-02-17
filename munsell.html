@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Munsell Hues</title>
+
+  
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+
+  <script src="shared.js"></script>
+  <script src="munsell.js"></script>
+
+</head>
+
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+
+    <h2 class="main-heading-style1">My Munsell Colour Viewer</h2>
+    <p>Very much under construction. Eventually animations of various colour schemes and fades to black, different value
+      chroma settings for a given scheme, and so much more &#128578;
+    </p>
+
+    <button type="button" onclick="onClickFaster()" id="form2-faster" class="button-style2">Faster</button>
+    <button type="button" onclick="onClickSlower()" id="form2-slower" class="button-style2">Slower</button>
+    <button type="button" onclick="onClickPause()" id="form2-pause" class="button-style2">Pause</button>
+    <button type="button" onclick="onClickRev()" id="form2-rev" class="button-style2">Reverse</button>
+
+    <!-- Where the colour display goes. -->
+    <h4 id="output1-h" class="main-heading-style1 mv2"></h4>
+    <div id="output1" class="h4 pa2 ma2 br2 mb0"></div>
+    <div id="output2" class="h4 pa2 ma2 br2 mt0"></div>
+    <h4 id="output2-h" class="main-heading-style1 mv2"></h4>
+
+  </article>
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      addStylesToElements('button-style2', buttonStyle2);
+      createHeaderNav('header-nav-container');
+      initMunsell();
+    }
+  </script>
+
+
+</body>
+
+</html>

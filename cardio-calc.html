@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Cardio Zones</title>
+
+  <!-- My stuff. -->
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+
+  <script src="shared.js"></script>
+  <script src="cardio-calc.js"></script>
+</head>
+
+<body class="color1-bg1" onload="onLoad()">
+  
+  <div class="header-nav-container"></div>
+
+  <article oninput="onInput()" class="main-style1">
+    <h2 class="main-heading-style1">Cardio Calculator</h2>
+
+    <!-- Names and ids start with form1 (even though currently it is not an actual form). -->
+    <div class="pa2 ba br2">
+      <div>
+        <input class="" type="radio" id="form1-spec-mhr" name="form1-r1" checked />
+        <label for="form1-spec-mhr">Specify Max Heart Rate Directly (Best Option)</label>
+      </div>
+
+      <div>
+        <input type="number" id="form1-mhr" class="color1 color1-bg3 color1-hover ml2 w3 bw0 br2 tr" min="100" max="300"
+          value="180" />
+        <label for="form1-mhr">Max Heart Rate</label>
+      </div>
+    </div>
+
+    <div class="mt2 pa2 ba br2 color2-border">
+      <div>
+        <input type="radio" id="form1-calc-mhr" name="form1-r1" />
+
+        <label for="form1-calc-mhr">Calculate Max Heart Rate From Formula</label>
+      </div>
+
+      <div>
+        <input type="number" id="form1-age" class="color1 color1-bg3 color1-hover ml2 w3 bw0 br2 tr" min="0" max="200" value="40" />
+        <label for="form1-age">Age</label>
+      </div>
+
+      <div class="pl2">
+        <input type="radio" id="form1-haskell" name="form1-r2" checked />
+        <label for="form1-haskell">220 - age (Haskell / Fox)</label>
+      </div>
+
+      <div class="pl2">
+        <input type="radio" id="form1-tanaka" name="form1-r2" />
+        <label for="form1-tanaka">206.9 - (0.67 x age) (Tanaka)</label>
+      </div>
+
+      <div class="pl2">
+        <input type="radio" id="form1-gulati" name="form1-r2" />
+        <label for="form1-gulati">206 - (0.88 x age) (Gulati)</label>
+      </div>
+
+      <div class="pl2">
+        <input type="output" id="form1-out1" class="color1 color1-bg3 color1-hover w3 bw0 br2 tc" />
+        <label for="form1-out1">Calculated Heart Rate</label>
+      </div>
+    </div>
+
+    <div class="mt2 pa2 ba br2 color2-border">
+      <div>
+        <input type="checkbox" id="form1-create-karv" name="form1-ck1" checked />
+        <label for="form1-create-karv">Create Karvonen Info</label>
+      </div>
+
+      <div>
+        <input type="number" id="form1-rhr" class="color1 color1-bg3 color1-hover ml2 w3 bw0 br2 tr" min="30" max="200" value="60" />
+        <label for="form1-rhr">Resting Heart Rate:</label>
+      </div>
+    </div>
+
+    <!-- The training zone tables. -->
+    <div class="mt2 pa2 flex flex-wrap flex-justify-space-evenly ba br2 color2-border">
+      <table id="form1-regular-data" class="table1 table-text-right ma2">
+        <thead>
+          <tr>
+            <th colspan="4">Max Heart Rate Zones</th>
+          </tr>
+          <tr>
+            <th colspan="2">Percentages</th>
+            <th colspan="2">Heart Rates</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>90%</td>
+            <td>100%</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>80%</td>
+            <td>90%</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>70%</td>
+            <td>80%</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>60%</td>
+            <td>70%</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>50%</td>
+            <td>60%</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>40%</td>
+            <td>50%</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table id="form1-karv-data" class="table1 table-text-right ma2">
+        <thead>
+          <tr>
+            <th colspan="4">Karvonen Zones</th>
+          </tr>
+          <tr>
+            <th colspan="2">Percentages</th>
+            <th colspan="2">Heart Rates</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>90%</td>
+            <td>100%</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>80%</td>
+            <td>90%</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>70%</td>
+            <td>80%</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>60%</td>
+            <td>70%</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>50%</td>
+            <td>60%</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>40%</td>
+            <td>50%</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      createHeaderNav('header-nav-container');
+
+      onInput();
+    }
+  </script>
+
+</body>
+
+</html>

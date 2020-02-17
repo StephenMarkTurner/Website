@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+
+  <title>Overview</title>
+
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+</head>
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+    <h2 class="main-heading-style1">Overview</h2>
+    <img class="image-style1" src="Images/main-background.jpg" alt="Variety of exercise dumbbells"
+      title="Variety of exercise dumbbells">
+
+    <ul>
+      <li>
+        There is an overwhelming amount of information. Every week, there is a
+        different diet strategy, every month a new way to increase muscle. For
+        most people,
+        <span class="b i">
+          'Sensible and Sustainable'
+        </span>
+        is a good model. A plan that
+        includes the longer term. The hare versus the tortoise.
+      </li>
+      <li class="mt2">
+        <span class="b i">
+          A sensible approach is easier to stick to and stands a better chance of becoming a regular habit.
+        </span>
+      </li>
+      <li class="mt2">
+        Exercise can be 'strong medicine'. You need to use the right amount. Fatigue and minor aches and pains can
+        accumulate. Usually the best plans involve an ebb and flow (they are
+        <span class="b i">periodized</span>).
+      </li>
+      <li class="mt2">
+        Fitness maintenance is easier than fitness development (I like to say
+        that the 'law of diminishing returns' works in your favour in the
+        other direction) &#128578. You take
+        advantage of this when you use periodization.
+      <li class="mt2">
+        <span class="b i">
+          Essentially,
+          during lower intensity phases,
+          you 'lose' more fatigue than you do fitness.
+        </span>
+      </li>
+      </li>
+      <li class="mt2">
+        Some gentle exercise should be done throughout the day, to break up periods of inactivity, i.e. 'desk breaks' or
+        similar.
+      </li>
+      <li class="mt2">
+        Eating more of the most nutritious foods and increasingly avoiding more highly processed foods is a great
+        starting point for
+        a dietary plan.
+        FYI, the scale is not an accurate measure in the short term. A change of 50 pounds per year would only be about
+        2 ounces per day, barely visible.
+      </li>
+
+      <li class="mt2">
+        Most people have unique issues that require customization of a
+        training program. For example, a sore shoulder or knee. This can last for a very brief time, or be something more
+        chronic. Certain exercises or intensity levels may have to be modified or even avoided.
+      </li>
+      <li class="mt2">
+        It's not an election. You don't have to pick one camp exclusively in your approach. For
+        example, you don't have to be 100% vegan (or carnivore!), or use 100%
+        free weights, or always use heavy weights and low reps, or completely
+        avoid cardio, or crunches, and so on.
+      </li>
+    </ul>
+  </article>
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements("main-style1", mainStyle1);
+      addStylesToElements("main-heading-style1", mainHeadingStyle1);
+      addStylesToElements("button-style1", buttonStyle1);
+      addStylesToElements('image-style1', imageStyle1);
+      createHeaderNav('header-nav-container');
+    }
+  </script>
+</body>
+
+</html>

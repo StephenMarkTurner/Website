@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Correlation Example</title>
+
+  <!-- My stuff. -->
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+</head>
+
+
+<body class="color1-bg1" onload="onLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+    <h2 class="main-heading-style1">A Lesson In Correlation And Causation<br>Or...<br>My Arm! It hurts Where The Tiger's
+      Biting It!</h2>
+
+    <p>It seemed simple enough.</p>
+    <p class="">A few years ago I went out for a bicycle ride in the morning. I had a modest breakfast consisting of a
+      glass of fruit smoothie and some oatmeal and peanut butter, and set out about an hour later. I rode at a moderate
+      intensity for about 3 hours. When I returned home I was feeling hungry, so I went out for a typical fast food
+      lunch. About an hour or so after eating I felt quite ill, and proceeded to forcefully purge the food I had eaten.
+    </p>
+    <p>Lesson learned, right? Or was it confirmation bias?</p>
+    <p>The following weekend I went out again for a slightly longer ride. I had the same, but larger, breakfast. The
+      plan was to avoid the temptation to get any fast food afterwards. I rode for about 2 hours and was ready to turn
+      around and return home, and that was when I started sensing that nauseated feeling again. I had a very unpleasant
+      ride home, in fact I was actually sick several times mid ride.</p>
+    <p>Unfortunately, the illness continued for over a week. I finally thought that I would change breakfast and see if
+      that had any effect. To my surprise, it did! It took another week for the symptoms to completely dissipate. I then
+      decided to try the ingredients from my original breakfast one at a time.</p>
+    <p>Bingo! It seemed to be the goji berries that were in my smoothie. Not the greasy fast food that I first
+      suspected.</p>
+    <p>All in all, a terrific but quite painful lesson. I had briefly contemplated an emergency visit to the hospital
+      (yes, the symptoms at times were that bad). Although I still eat a highly plant centric diet, I stay
+      well clear of goji berries.</p>
+
+  </article>
+
+  <script>
+    function onLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      createHeaderNav('header-nav-container');
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Contact Steve</title>
+
+  <!-- My stuff. -->
+  <link rel="stylesheet" href="tachyons.min.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script src="shared.js"></script>
+  <style>
+    /* Debug, make sure it is last */
+    /* * {outline: 1px solid greenyellow; } */
+  </style>
+
+
+</head>
+
+
+<body class="color1-bg1" onload="myPageLoad()">
+
+  <div class="header-nav-container"></div>
+
+  <article class="main-style1">
+    <h2 class="main-heading-style1">Contact Information</h2>
+    <div class="photo-container"></div>
+
+    <p class="mt0 pt2 pt3-m pt3-l">
+      Email: <span class="pa2 br2 color2-bg-dull" id="para1">blah blah blah</span>
+    </p>
+    <p class="mt2">
+      Voice: <span class="pa2 br2 color2-bg-dull">5198887750</span>
+    </p>
+
+    <a class="link-style2" href="res.html">
+      About me.
+    </a>
+
+
+  </article>
+
+  <script>
+    function myPageLoad() {
+      setColorTheme();
+      addStylesToElements('main-style1', mainStyle1);
+      addStylesToElements('link-style2', linkStyle2);
+      addStylesToElements('main-heading-style1', mainHeadingStyle1);
+      createMyProfilePhoto('photo-container');
+      createHeaderNav('header-nav-container');
+
+      el = document.getElementById("para1");
+      s1a = "smtu";
+      s1b = "rner1956";
+      a = String.fromCharCode(30 + 34);
+      s2 = "gma";
+      s3 = "il."
+      s4 = "com";
+      s = s1a + s1b + a + s2 + s3 + s4;
+      el.innerHTML = s;
+    }
+  </script>
+
+</body>
+
+</html>

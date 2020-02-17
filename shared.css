@@ -1,0 +1,85 @@
+/* CSS vars */
+:root {
+  /* 'City of Waterloo' colour theme. Somewhat gold colour (at the right Saturation and Luminance). */
+  --hue-yellow: 50;
+  --color1: hsl(var(--hue-yellow), 60%, 60%);
+  --color1-heading: hsl(var(--hue-yellow), 70%, 70%);
+  --color1-bg1: rgb(08%, 08%, 08%);
+  --color1-bg2: rgb(14%, 14%, 14%);
+  --color1-bg3: rgb(20%, 20%, 20%);
+  --color1-bg4: rgb(30%, 30%, 30%);
+}
+
+:root[theme='light'] {
+  /* 'City of Waterloo' colour theme. Somewhat gold colour (at the right Saturation and Luminance). */
+  --hue-yellow: 45;
+  --color1: rgb(08%, 08%, 08%);
+  --color1-heading: rgb(04%, 04%, 04%);
+  --color1-bg1: hsl(var(--hue-yellow), 60%, 80%);
+  --color1-bg2: hsl(var(--hue-yellow), 60%, 70%);
+  --color1-bg3: hsl(var(--hue-yellow), 60%, 60%);
+  --color1-bg4: hsl(var(--hue-yellow), 60%, 50%);
+}
+
+/* Global line height, to enhance readability */
+body {
+  line-height: 1.33;
+}
+
+/* CSS classes */
+.color1 {
+  color: var(--color1);
+}
+
+.color1-heading {
+  color: var(--color1-heading);
+}
+
+ .color1-disabled[disabled] {
+  color: var(--color1-bg4);
+}
+
+.color1-bg1 {
+  background-color: var(--color1-bg1);
+}
+
+.color1-bg2 {
+  background-color: var(--color1-bg2);
+}
+
+.color1-bg3 {
+  background-color: var(--color1-bg3);
+}
+
+.color1-border {
+  border-color: var(--color1-bg4);
+}
+
+.color1-hover:hover,
+.color1-hover:focus {
+  background-color: var(--color1-bg4);
+}
+
+
+/* For table in Strength Plan, Cardio Calculator. */
+.table1 {
+  border: 0.0625rem solid var(--color1);
+  border-collapse: collapse;
+}
+
+.table1 th,
+.table1 td {
+  border: 0.125rem solid var(--color1);
+  padding: 0.25rem 1.0rem;
+}
+
+.table-text-right td {
+  text-align: right;
+}
+
+/* Tachyons seems to be missing this one. */
+.flex-justify-space-evenly {
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
