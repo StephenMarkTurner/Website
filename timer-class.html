@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+
+    <link rel="stylesheet" href="tachyons.min.css" />
+    <link rel="stylesheet" href="shared.css" />
+    <script src="shared.js"></script>
+    <script src="timer-class.js"></script>
+
+</head>
+
+<body class="color1-bg1" onload="onLoad()">
+    <div class="header-nav-container"></div>
+
+    <article class="main-style1">
+        <p id="out-para">debug information</p>
+
+        <h2 class="main-heading-style1">Multi Timer</h2>
+
+        <details>
+            <summary>
+                Timer Information
+            </summary>
+
+            <div>
+                <p>
+                    Count down to stop after a set period of time.
+                    <br>
+                    Count up to stop whenever you finally decide that you are finished.
+                </p>
+                <p>
+                    You can set an initial delay, to move from the computer to your desired location.
+                    <br>
+                    You can run a single time, or have intervals.
+                    <br>
+                    You can have two intervals, to allow a different work and rest time for example.
+                    <br>
+                    You can have a 'heads up' just before each work interval.
+                    <br>
+                    You can pause and restart the timer.
+                </p>
+                </div">
+        </details>
+        <!-- Not an actual form. -->
+        <div class="mt3 pa2">
+            <div>
+                <div class="ba br2 pa1">
+                    <label>Initial Delay (Sec)
+                        <input type="number" id="f-delay" name="" min="0" max="99" step="1" value="5"
+                            class="br2 bw0 ma1 tr" />
+                    </label>
+                    <label class="ml2">Beep After Delay
+                        <input type="checkbox" class="ml2" id="f-beepafterdelay" name="" />
+                    </label>
+                </div>
+            </div>
+            <div class="ba br2 pa1 mt2">
+                <label>Main Timer <br>Min
+                    <input type="number" id="f-timemin" name="" class="br2 bw0 ma1 tr" min="0" max="999" step="1"
+                        value="0" />
+                </label>
+                <label class="ml2">Sec
+                    <input type="number" id="f-timesec" name="" min="0" max="59" step="1" value="15"
+                        class="br2 bw0 ma1 tr" />
+                </label>
+                <br>
+                <label class="">Count Up
+                    <input type="checkbox" class="ml2" id="f-countup" name="" />
+                </label>
+            </div>
+
+
+            <div class="ba br2 pa1 mt2">
+                <label>Interval Timer
+                    <input class="ml2" type="checkbox" id="f-useintervaltimer" />
+                </label>
+                <br>
+                <label>Work Interval Min
+                    <input type="number" id="f-workmin" name="" class="br2 bw0 ma1 tr" min="0" max="999" step="1"
+                        value="0" />
+                </label>
+                <label class="ml2">Work Interval Sec
+                    <input type="number" id="f-worksec" name="" min="0" max="59" step="1" value="5"
+                        class="br2 bw0 ma1 tr" />
+                </label>
+                <br>
+                <label class="">Work Interval Heads Up
+                    <input type="number" id="f-workheadsup" name="" min="0" max="59" step="1" value="0"
+                        class="br2 bw0 ma1 tr" />
+                </label>
+                <br>
+                <br>
+                <label>Rest Interval
+                    <input type="checkbox" class="ml2" id="f-userestinterval" />
+                    <br>
+                </label>
+                <label>Rest Interval Min
+                    <input type="number" id="f-restmin" name="" class="
+                   br2 bw0 ma1 tr" min="0" max="999" step="1" value="1" />
+                </label>
+                <label class="ml2">Rest Interval Sec
+                    <input type="number" id="f-restsec" name="" class="w3 br2 bw0 ma1 tr" min="0" max="59" step="1"
+                        value="0" />
+                </label>
+                <br>
+            </div>
+            <div class="ba br2 pa1 mt2">
+                <button type="button" id="f-startpause" class="mt2 button-style2" onclick="onClickStartPause()">
+                    Start / Pause
+                </button>
+                <button type="button" id="f-reset" class="button-style2" onclick="onClickReset()">
+                    Reset
+                </button>
+            </div>
+        </div>
+
+
+        <script>
+            function onLoad() {
+                setColorTheme();
+                addStylesToElements("main-style1", mainStyle1);
+                addStylesToElements("main-heading-style1", mainHeadingStyle1);
+                addStylesToElements("button-style2", buttonStyle2);
+                addStylesToElements("link-style2", linkStyle2);
+                createHeaderNav("header-nav-container");
+
+                initTimerFunction();
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            }
+        </script>
+
+</body>
+
+</html>

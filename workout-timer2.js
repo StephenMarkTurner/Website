@@ -1,19 +1,4 @@
-/* eslint-disable max-lines */
-/* eslint-disable object-curly-spacing */
-/* eslint-disable max-lines-per-function */
-/* eslint no-use-before-define: ["error", { "functions": false }]*/
-/* eslint-disable multiline-comment-style */
-/* eslint-disable max-statements */
-/* eslint-disable multiline-ternary */
-/* eslint-disable no-ternary */
-/* eslint-disable max-params */
-/* eslint-disable id-length */
-/* eslint-disable spaced-comment */
-/* eslint-disable sort-keys */
-/* eslint-disable quote-props */
-/* eslint-disable max-lines */
-/* eslint-disable max-classes-per-file */
-/* eslint no-unused-vars: ["error", { "vars": "local" }] */
+// Adding a comment, trying to trigger eslint.
 
 // It is best not to calculate passing time by adding little timer intervals.
 // This timer works by setting one start time, then comparing 'now'
@@ -24,7 +9,7 @@
 
 //#region Data.
 
-const mainTimerStates = {
+const timerStates = {
   ready: "ready",
   running: "running",
   paused: "paused",
@@ -38,7 +23,7 @@ let previousElapsedSeconds = 0;
 // Need to save the time accrued if the timer is paused.
 let accumulatedMilliseconds = 0;
 // Ready, running, paused, finished.
-let timerState = mainTimerStates.ready;
+let timerState = timerStates.ready;
 
 // Save the timer settings.
 class MainTimerData {
@@ -72,7 +57,7 @@ class MainTimerData {
     // Don't use any checkbox info of course.
   }
 }
-const mainTimer = new MainTimerData();
+const mainTimer = new FitnessTimer();
 
 // These are added on the fly by the user.
 class SplitTimerData {
@@ -269,16 +254,16 @@ function restoreSavedDataToControls() {
 function getTimerColor(state) {
   let currentColor = null;
   switch (state) {
-    case mainTimerStates.ready:
+    case timerStates.ready:
       currentColor = "rgb(90%, 90%, 90%)";
       break;
-    case mainTimerStates.running:
+    case timerStates.running:
       currentColor = "rgb(50%, 90%, 50%)";
       break;
-    case mainTimerStates.paused:
+    case timerStates.paused:
       currentColor = "rgb(50%, 70%, 50%)";
       break;
-    case mainTimerStates.finished:
+    case timerStates.finished:
       currentColor = "rgb(90%, 30%, 30%)";
       break;
     default:
@@ -295,7 +280,7 @@ function setTimerColors() {
   setElementBackgroundColor("f-t1-timesec", currentColor);
   setElementBackgroundColor("f-delay", currentColor);
 
-  const finishedColor = getTimerColor(mainTimerStates.finished);
+  const finishedColor = getTimerColor(timerStates.finished);
   splitTimers.forEach((settings, i) => {
     // Split timers can be finished ahead of time.
     const color = settings.finished ? finishedColor : currentColor;
@@ -322,7 +307,7 @@ function timerHandler() {
   if (currentElapsedSeconds > previousElapsedSeconds) {
     // Only run on the one second boundary, conserve resources.
     previousElapsedSeconds = currentElapsedSeconds;
-    if (timerState == mainTimerStates.running) {
+    if (timerState == timerStates.running) {
       updateDisplay(timeInfo);
     }
     //updateDebugDisplay2(timeInfo);
@@ -389,7 +374,7 @@ function updateMainTimer(secondsRemaining, secondsElapsedAfterDelay) {
   setElementValue("f-delay", 0);
 
   if (secondsRemaining <= 0 && runForever === false) {
-    timerState = mainTimerStates.finished;
+    timerState = timerStates.finished;
     absoluteStartTime = getNow();
     accumulatedMilliseconds = 0;
     setTimerColors();
@@ -540,30 +525,30 @@ function updateSplitDoubleTimer(
 // Toggle between running and paused / ready.
 // eslint-disable-next-line no-unused-vars
 function onClickStartPause() {
-  if (timerState == mainTimerStates.ready) {
+  if (timerState == timerStates.ready) {
     // Only do this here (from ready to running).
     saveDataFromControls();
     absoluteStartTime = getNow();
     previousElapsedSeconds = 0;
     accumulatedMilliseconds = 0;
-    timerState = mainTimerStates.running;
+    timerState = timerStates.running;
     setTimerColors();
     setElementDisabled("f-b-reset", true);
     setElementDisabled("f-b-addtimer", true);
     setElementDisabled("f-b-adddoubletimer", true);
     setElementDisabled("f-t1-run-forever", true);
     setElementDisabled("f-t1-count-up", true);
-  } else if (timerState == mainTimerStates.paused) {
+  } else if (timerState == timerStates.paused) {
     absoluteStartTime = getNow();
     previousElapsedSeconds = 0;
-    timerState = mainTimerStates.running;
+    timerState = timerStates.running;
     setTimerColors();
     setElementDisabled("f-b-reset", true);
-  } else if (timerState == mainTimerStates.running) {
+  } else if (timerState == timerStates.running) {
     const { now, currentElapsedMilliSeconds } = getTimeInformation();
     accumulatedMilliseconds += currentElapsedMilliSeconds;
     absoluteStartTime = now;
-    timerState = mainTimerStates.paused;
+    timerState = timerStates.paused;
     setTimerColors();
     setElementDisabled("f-b-reset", false);
   }
@@ -572,14 +557,14 @@ function onClickStartPause() {
 // eslint-disable-next-line no-unused-vars
 function onClickReset() {
   if (
-    timerState == mainTimerStates.finished ||
-    timerState == mainTimerStates.paused
+    timerState == timerStates.finished ||
+    timerState == timerStates.paused
   ) {
     restoreSavedDataToControls();
     absoluteStartTime = getNow();
     previousElapsedSeconds = 0;
     accumulatedMilliseconds = 0;
-    timerState = mainTimerStates.ready;
+    timerState = timerStates.ready;
     setTimerColors();
     setElementDisabled("f-b-startpause", false);
     setElementDisabled("f-b-reset", true);
@@ -593,7 +578,7 @@ function onClickReset() {
 
 // eslint-disable-next-line no-unused-vars
 function onClickAddTimer() {
-  if (timerState == mainTimerStates.ready) {
+  if (timerState == timerStates.ready) {
     splitTimers.push(new SplitTimerData());
     const newSplitTimerElement = document.createElement("div");
     newSplitTimerElement.innerHTML = createSplitTimerHtml(splitTimers.length);
@@ -632,7 +617,7 @@ function createSplitTimerHtml(currentTimerNum) {
 
 // eslint-disable-next-line no-unused-vars
 function onClickAddDoubleTimer() {
-  if (timerState == mainTimerStates.ready) {
+  if (timerState == timerStates.ready) {
     splitDoubleTimers.push(new SplitDoubleTimerData());
     const newSplitDoubleTimerElement = document.createElement("div");
     newSplitDoubleTimerElement.innerHTML = createSplitDoubleTimerHtml(
