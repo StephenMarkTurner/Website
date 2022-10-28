@@ -18,9 +18,11 @@
     <div class="header-nav-container"></div>
 
     <article class="main-style1">
+        <!-- 
         <p id="out-para">debug information</p>
+        -->
 
-        <h2 class="main-heading-style1">Multi Timer</h2>
+        <h2 class="main-heading-style1">Super Duper Fitness Timer</h2>
 
         <details>
             <summary>
@@ -50,53 +52,53 @@
         <div class="mt3 pa2">
             <div>
                 <div class="ba br2 pa1">
-                    <label>Initial Delay (Sec)
+                    <label>Initial Delay Sec
                         <input type="number" id="f-delay" name="" min="0" max="99" step="1" value="5"
                             class="br2 bw0 ma1 tr" />
                     </label>
                     <label class="ml2">Beep After Delay
-                        <input type="checkbox" class="ml2" id="f-beepafterdelay" name="" />
+                        <input type="checkbox" class="ml2" id="f-beepafterdelay" name="" checked />
                     </label>
                 </div>
             </div>
             <div class="ba br2 pa1 mt2">
                 <label>Main Timer <br>Min
                     <input type="number" id="f-timemin" name="" class="br2 bw0 ma1 tr" min="0" max="999" step="1"
-                        value="0" />
+                        value="10" />
                 </label>
                 <label class="ml2">Sec
-                    <input type="number" id="f-timesec" name="" min="0" max="59" step="1" value="15"
+                    <input type="number" id="f-timesec" name="" min="0" max="59" step="1" value="0"
                         class="br2 bw0 ma1 tr" />
                 </label>
                 <br>
                 <label class="">Count Up
-                    <input type="checkbox" class="ml2" id="f-countup" name="" />
+                    <input type="checkbox" class="ml2" id="f-countup" name="" checked  />
                 </label>
             </div>
 
 
             <div class="ba br2 pa1 mt2">
                 <label>Interval Timer
-                    <input class="ml2" type="checkbox" id="f-useintervaltimer" />
+                    <input class="ml2" type="checkbox" id="f-useintervaltimer" checked  />
                 </label>
                 <br>
                 <label>Work Interval Min
                     <input type="number" id="f-workmin" name="" class="br2 bw0 ma1 tr" min="0" max="999" step="1"
-                        value="0" />
+                        value="1" />
                 </label>
                 <label class="ml2">Work Interval Sec
-                    <input type="number" id="f-worksec" name="" min="0" max="59" step="1" value="5"
+                    <input type="number" id="f-worksec" name="" min="0" max="59" step="1" value="0"
                         class="br2 bw0 ma1 tr" />
                 </label>
                 <br>
-                <label class="">Work Interval Heads Up
-                    <input type="number" id="f-workheadsup" name="" min="0" max="59" step="1" value="0"
+                <label class="">Work Interval Heads Up Sec
+                    <input type="number" id="f-workheadsup" name="" min="0" max="59" step="1" value="5"
                         class="br2 bw0 ma1 tr" />
                 </label>
                 <br>
                 <br>
                 <label>Rest Interval
-                    <input type="checkbox" class="ml2" id="f-userestinterval" />
+                    <input type="checkbox" class="ml2" id="f-userestinterval" checked />
                     <br>
                 </label>
                 <label>Rest Interval Min
@@ -116,6 +118,10 @@
                 <button type="button" id="f-reset" class="button-style2" onclick="onClickReset()">
                     Reset
                 </button>
+                <label>Beep Volume (0 - 10)
+                    <input type="number" id="f-beepvolume" name="" class="br2 bw0 ma1 tr" min="0" max="10" step="1"
+                        value="7" />
+                </label>
             </div>
         </div>
 

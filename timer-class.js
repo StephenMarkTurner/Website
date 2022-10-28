@@ -8,6 +8,8 @@
 
 
 /////////////////////////////////////////
+/////////////////////////////////////////
+/////////////////////////////////////////
 //
 // Data structures.
 //
@@ -56,6 +58,19 @@ const timerInfo = {
     workSec: 0,
     restMin: 0,
     restSec: 0,
+
+    // Data derived from initial info.
+    initTotalSeconds: 0,
+    workTotalSeconds: 0,
+    restTotalSeconds: 0,
+    intervalTotalSeconds: 0,
+
+    // Beep info
+    needBeep: false,
+    needLoudBeep: false,
+    audioPlayer: null,
+    beepVolume: 0
+
 }
 
 // Convenience arrays for forEach. 
@@ -63,14 +78,15 @@ const timerMainDisplays = ["f-timemin", "f-timesec"];
 const timerWorkDisplays = ["f-workmin", "f-worksec", "f-workheadsup"];
 const timerRunningWorkDisplays = ["f-workmin", "f-worksec"]; // headsup doesn't run.
 const timerRestDisplays = ["f-restmin", "f-restsec"];
-const timerAllDisplays = [
+const timerRunningDisplays = [
     'f-delay',
     ...timerMainDisplays,
     ...timerWorkDisplays,
     ...timerRestDisplays
 ];
 const timerElementsToDisable = [
-    ...timerAllDisplays,
+    ...timerRunningDisplays,
+    'f-delay',
     "f-beepafterdelay",
     "f-countup",
     'f-useintervaltimer',
@@ -81,13 +97,16 @@ Object.freeze(timerMainDisplays);
 Object.freeze(timerWorkDisplays);
 Object.freeze(timerRunningWorkDisplays);
 Object.freeze(timerRestDisplays);
-Object.freeze(timerAllDisplays);
+Object.freeze(timerRunningDisplays);
 Object.freeze(timerElementsToDisable);
 
 
 /////////////////////////////////////////
 /////////////////////////////////////////
+/////////////////////////////////////////
+//
 // Utility functions.
+//
 function elid(id) {
     return document.getElementById(id);
 }
@@ -121,18 +140,28 @@ function getElementChecked(id) {
 ///////////////////////////////////
 //
 // Entry point from html.
+//
 function initTimerFunction() {
     systemTimerInfo.absoluteStartMilliseconds = getNow();
+    setInterval(timerHandler, 250);
     setTimerColors();
     setElementDisabled("f-reset", false);
-    setInterval(timerHandler, 500);
-    //setInterval(timerHandler, 100);
+    timerInfo.audioPlayer = new Audio("Sounds/beep-short.mp3");
+    const volControl = elid('f-beepvolume');
+    volControl.addEventListener('click', beepVolumeListener);
+    //console.log('init');
 }
 
+function beepVolumeListener(ev) {
+    const value = ev.target.value;
+    timerInfo.beepVolume = value;
+    //console.log(value);
+}
 
-////////////////////////
-///////////////////////
-////////////////////////
+///////////////////////////////////////
+/////////////////////////////////////
+////////////////////////////////////////
+//
 // Update system timer data in response to
 // buttons pressed by user.
 //
@@ -154,9 +183,9 @@ function pauseSystemTimerInfo() {
     systemTimerInfo.absoluteStartMilliseconds = getNow();
 }
 
-/////////////////
-/////////////////
-////////////////
+/////////////////////////
+///////////////////////////
+////////////////////////////
 //
 //  Colour related code
 //
@@ -176,21 +205,16 @@ function setTimerColors() {
 function setReadyTimerColors() {
     // Set everything to ready colour.
     const currentColor = timerColors[timerState];
-    timerAllDisplays.forEach(id => setElementBackgroundColor(id, currentColor));
+    timerRunningDisplays.forEach(id => setElementBackgroundColor(id, currentColor));
+    setElementBackgroundColor('f-beepvolume', currentColor);
 }
 
 function setRunningTimerColors() {
     const currentColor = timerColors[timerState];
     timerMainDisplays.forEach(id => setElementBackgroundColor(id, currentColor));
-    if (timerInfo.initialDelay > 0) {
-        setElementBackgroundColor("f-delay", currentColor);
-    }
 
     if (timerInfo.useIntervalTimer) {
         timerRunningWorkDisplays.forEach(id => setElementBackgroundColor(id, currentColor));
-        if (timerInfo.workHeadsup > 0) {
-            setElementBackgroundColor("f-workheadsup", currentColor);
-        }
         if (timerInfo.useRestInterval) {
             timerRestDisplays.forEach(id => setElementBackgroundColor(id, currentColor));
         }
@@ -221,11 +245,15 @@ function setPausedTimerColors() {
 
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
+///////////////////////////////////////////////
 //
 // Handler, run perhaps 10 times per second to update time information.
 // Update screen display every second.
 //
 function timerHandler() {
+    if (timerState == timerStates.finished) {
+        setElementDisabled("f-reset", false);
+    }
     const timeInfo = getTimeInformation();
     const { currentElapsedSeconds } = timeInfo;
     if (currentElapsedSeconds > systemTimerInfo.previousElapsedSeconds) {
@@ -235,9 +263,22 @@ function timerHandler() {
             updateDisplay(timeInfo);
         }
     }
-    updateDebugDisplay1(timeInfo);
-}
+    //updateDebugDisplay1(timeInfo);
 
+    const ti = timerInfo;
+    if (ti.needLoudBeep) {
+        ti.needLoudBeep = false;
+        playLoudBeep();
+        setTimeout(playLoudBeep, 2000);
+    } else if (ti.needBeep) {
+        ti.needBeep = false;
+        // Don't want both sounds.
+        const totalElapsed = ti.initTotalSeconds + ti.initialDelay;
+            if ( timerInfo.countUp || totalElapsed - currentElapsedSeconds > 0) {
+            playBeep();
+        }
+    }
+}
 
 // System time functions.
 //
@@ -271,83 +312,121 @@ function getTimeInformation() {
 }
 
 
+/////////////////////////////
+///////////////////////////////////
+//////////////////////////////////////
+// Audio
+//
+function playBeep() {
+    //
+    timerInfo.audioPlayer.volume = timerInfo.beepVolume / 10;
+    timerInfo.audioPlayer.play();
+    //timerInfo.audioPlayer = null;
+}
+
+function playLoudBeep() {
+    let volume = timerInfo.beepVolume + 2;
+    if (volume > 10) {
+        volume = 10;
+    }
+    timerInfo.audioPlayer.volume = volume / 10;
+    timerInfo.audioPlayer.play();
+    //timerInfo.audioPlayer = null;
+}
+
 //////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
+//
 // Update the running time info.
 //
-function updateDisplay(timeInfo) {
+function updateDisplay() {
     // If this is called, then probably a full second,
     // has elapsed, ie there will be work to do.
-    const tes = timeInfo.totalElapsedSeconds;
-    console.assert(tes > 0, "update display error");
+    const t = getTimeInformation();
+    console.assert(t.totalElapsedSeconds > 0, "update display error");
 
-    if (tes <= timerInfo.initialDelay) {
-        updateDisplayInitialDelay(tes);
-        // Nothing else to do if still in initial delay.
+    if (t.totalElapsedSeconds < timerInfo.initialDelay) {
+        return;
+    }
+    if (t.totalElapsedSeconds == timerInfo.initialDelay) {
+        if (timerInfo.beepAfterDelay) {
+            timerInfo.needBeep = true;
+        }
         return;
     }
 
-    // Remove the initial delay from the calcs.
-    const tesAfterDelay = tes - timerInfo.initialDelay;
-    const initTotalSeconds = timerInfo.timeMin * 60 + timerInfo.timeSec;
-    updateDisplayMainDisplay(tesAfterDelay, initTotalSeconds);
+    // Remove the initial delay from the elapsed time.
+    const elapsedAfterDelay = t.totalElapsedSeconds - timerInfo.initialDelay;
+    updateDisplayMainDisplay(elapsedAfterDelay);
+
+    //console.log(t.totalElapsedSeconds, elapsedAfterDelay);
 
     if (timerInfo.useIntervalTimer) {
-        updateDisplayIntervalDisplay(tesAfterDelay);
+        updateDisplayIntervalDisplay(elapsedAfterDelay);
     }
 }
 
-function updateDisplayInitialDelay(tes) {
-    const newVal = timerInfo.initialDelay - tes;
-    setElementValue('f-delay', newVal);
-}
-
-function updateDisplayMainDisplay(tesAfterDelay, initTotalSeconds) {
+function updateDisplayMainDisplay(elapsedSecAfterDelay) {
     if (timerInfo.countUp) {
-        const displayMin = Math.floor(tesAfterDelay / 60);
-        const displaySec = tesAfterDelay % 60;
+        const displayMin = Math.floor(elapsedSecAfterDelay / 60);
+        const displaySec = elapsedSecAfterDelay % 60;
         setElementValue('f-timemin', displayMin);
         setElementValue('f-timesec', displaySec);
     } else {
-        if (initTotalSeconds >= tesAfterDelay) {
-            const secRemaining = initTotalSeconds - tesAfterDelay;
+        const secRemaining = timerInfo.initTotalSeconds - elapsedSecAfterDelay;
+        if (secRemaining >= 0) {
             const displayMin = Math.floor(secRemaining / 60);
             const displaySec = secRemaining % 60;
             setElementValue('f-timemin', displayMin);
             setElementValue('f-timesec', displaySec);
+            if (secRemaining == 0) {
+                timerState = timerStates.finished;
+                timerInfo.needLoudBeep = true;
+            }
         }
     }
 }
 
-function updateDisplayIntervalDisplay(tesAfterDelay) {
-    if (timerInfo.countUp) {
-        const loopSeconds = timerInfo.workMin * 60 + timerInfo.workSec;
-        let modsec = tesAfterDelay % loopSeconds;
-        if (modsec == 0) {
-            modsec = loopSeconds;
-        }
-        setElementValue('f-worksec', modsec);
-    } else if (initTotalSeconds >= tesAfterDelay) {
-        const loopSeconds = timerInfo.workMin * 60 + timerInfo.workSec;
-        const modsec = tesAfterDelay % loopSeconds;
-        let modsec2 = loopSeconds - modsec;
-        if (initTotalSeconds == tesAfterDelay) {
-            // Finished.
-            modsec2 = 0;
-        }
+// Interval timers always count down.
+function updateDisplayIntervalDisplay(elapsedSecAfterDelay) {
+    const i = timerInfo;
+    let loopElapsed = elapsedSecAfterDelay % i.intervalTotalSeconds;
+    if (loopElapsed == 0) {
+        loopElapsed = i.intervalTotalSeconds;
+    }
 
-        //setElementValue('f-workmin', displayMin);
-        setElementValue('f-worksec', modsec2);
+    if (loopElapsed <= i.workTotalSeconds) {
+        let downSec = i.workTotalSeconds - loopElapsed;
+        let workMin = Math.floor(downSec / 60);
+        let workSec = downSec % 60;
+        //console.log('work', elapsedSecAfterDelay, loopElapsed, downSec, workMin, workSec);
+        setElementValue('f-workmin', workMin);
+        setElementValue('f-worksec', workSec);
+        if (downSec == 0) {
+            timerInfo.needBeep = true;
+        }
+    } else {
+        loopElapsed -= i.workTotalSeconds;
+        let downSec = i.restTotalSeconds - loopElapsed;
+        let restMin = Math.floor(downSec / 60);
+        let restSec = downSec % 60;
+        //console.log('rest', elapsedSecAfterDelay, loopElapsed, downSec, restMin, restSec);
+        setElementValue('f-restmin', restMin);
+        setElementValue('f-restsec', restSec);
+        const hu = timerInfo.workHeadsup;
+        if (hu > 0 && hu == downSec) {
+            timerInfo.needBeep = true;
+        }
+        if (downSec == 0) {
+            timerInfo.needBeep = true;
+        }
     }
 }
-
 
 ///////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////
-//
-//#region Button handlers.
 //
 // Toggle between running and paused / ready.
 //
@@ -355,7 +434,7 @@ function updateDisplayIntervalDisplay(tesAfterDelay) {
 function onClickStartPause() {
     if (timerState == timerStates.ready) {
         // Only do this here (from ready to running).
-        saveVolatileUserSettings();
+        saveInitUserSettings();
         initOrResetSystemTimerInfo();
         timerState = timerStates.running;
         setTimerColors();
@@ -379,12 +458,13 @@ function onClickReset() {
         timerState == timerStates.finished ||
         timerState == timerStates.paused
     ) {
-        restoreVolatileUserSettings();
+        restoreInitUserSettings();
         absoluteStartTime = getNow();
         previousElapsedSeconds = 0;
         accumulatedMilliseconds = 0;
         timerState = timerStates.ready;
         setTimerColors();
+        enableElements();
     }
 }
 
@@ -396,8 +476,7 @@ function enableElements() {
     timerElementsToDisable.forEach(id => setElementDisabled(id, false));
 }
 
-// Save control settings. Some change during timer running.
-function saveVolatileUserSettings() {
+function saveInitUserSettings() {
     timerInfo.initialDelay = getElementIntValue('f-delay');
     timerInfo.beepAfterDelay = getElementChecked('f-beepafterdelay');
     timerInfo.timeMin = getElementIntValue('f-timemin');
@@ -410,10 +489,17 @@ function saveVolatileUserSettings() {
     timerInfo.useRestInterval = getElementChecked('f-userestinterval');
     timerInfo.restMin = getElementIntValue('f-restmin');
     timerInfo.restSec = getElementIntValue('f-restsec');
+    timerInfo.beepVolume = getElementIntValue('f-beepvolume');
+
+    timerInfo.initTotalSeconds = timerInfo.timeMin * 60 + timerInfo.timeSec;
+    timerInfo.workTotalSeconds = timerInfo.workMin * 60 + timerInfo.workSec;
+    timerInfo.restTotalSeconds = timerInfo.useRestInterval ?
+        timerInfo.restMin * 60 + timerInfo.restSec : 0;
+    timerInfo.intervalTotalSeconds = timerInfo.workTotalSeconds + timerInfo.restTotalSeconds;
 }
 
 // Put display back to before the timer was run.
-function restoreVolatileUserSettings() {
+function restoreInitUserSettings() {
     setElementValue('f-delay', timerInfo.initialDelay);
     setElementValue('f-timemin', timerInfo.timeMin);
     setElementValue('f-timesec', timerInfo.timeSec);
@@ -425,6 +511,8 @@ function restoreVolatileUserSettings() {
 }
 
 
+///////////////////////
+///////////////////////
 ///////////////////////
 // Debug displays
 //

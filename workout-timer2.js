@@ -183,13 +183,13 @@ function getTimeInformation() {
   };
 }
 
-function playSmallSound() {
+function playShortBeep() {
   const a = new Audio("Sounds/beep-short.mp3");
   a.volume = 0.3;
   a.play();
 }
 
-function playBigSound() {
+function playLongBeep() {
   const a = new Audio("Sounds/beep-long.mp3");
   a.play();
 }
@@ -343,7 +343,7 @@ function updateDisplayDuringDelay(secondsDelayRemaining) {
   setElementValue("f-delay", secondsDelayRemaining);
   document.title = `Delay: ${secondsDelayRemaining}`;
   if (secondsDelayRemaining == 0 && mainTimer.beepAfterDelay) {
-    playSmallSound();
+    playShortBeep();
   }
 }
 
@@ -378,7 +378,7 @@ function updateMainTimer(secondsRemaining, secondsElapsedAfterDelay) {
     absoluteStartTime = getNow();
     accumulatedMilliseconds = 0;
     setTimerColors();
-    playBigSound();
+    playLongBeep();
     //setElementDisabled("f-b-startpause", true);
     //setElementDisabled("f-b-addtimer", true);
     //setElementDisabled("f-b-adddoubletimer", true);
@@ -421,7 +421,7 @@ function updateSplitTimer(
   if (completedLoop) {
     // Don't play split timer sounds if main timer is finished.
     if (timerState != timerState.finished) {
-      playSmallSound();
+      playShortBeep();
     }
     if (!settings.repeat) {
       // This timer only plays once.
@@ -479,7 +479,7 @@ function updateSplitDoubleTimer(
     if (completedLoop) {
       // Don't play split timer sounds if main timer is finished.
       if (timerState != timerState.finished) {
-        playSmallSound();
+        playShortBeep();
       }
     }
     // Display time as 1 to n, not 0 to (n-1).
@@ -502,7 +502,7 @@ function updateSplitDoubleTimer(
     if (completedLoop) {
       // Don't play split timer sounds if main timer is finished.
       if (timerState != timerState.finished) {
-        playSmallSound();
+        playShortBeep();
       }
     }
     // Display time as 1 to n, not 0 to (n-1).
